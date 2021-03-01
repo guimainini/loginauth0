@@ -1,16 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-protegida',
   templateUrl: './protegida.component.html',
-  styles: [
-  ]
+  styles: []
 })
 export class ProtegidaComponent implements OnInit {
 
-  constructor() { }
+  constructor( public auth: AuthService ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    console.log('ngOnInit protegida');
+    this.auth.userProfile$.subscribe( perfil => {
+      console.log(perfil);
+    });
   }
 
 }
